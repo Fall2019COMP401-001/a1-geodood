@@ -1,10 +1,13 @@
 package a1;
 
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class A1Novice {
 
 	public static void main(String[] args) {
+		
+		DecimalFormat df = new DecimalFormat("#.##");
 		
 		Scanner scan = new Scanner(System.in);
 
@@ -29,15 +32,17 @@ public class A1Novice {
 				int quantity = scan.nextInt();
 				String itemName = scan.next();
 				double price = scan.nextDouble();
-				totalCost[i] += quantity * price;		
+				double subtotal = quantity * price;
+				totalCost[i] += subtotal;		
 				j++;
-			}	
+			}
 		} 
 		
 		scan.close();
 		
 		for (int i = 0; i < total; i++) {
-			System.out.println(firstName[i].charAt(0) + ". "+ lastName[i] + ": " + totalCost[i]);
+			System.out.println(firstName[i].charAt(0) + ". "+ lastName[i] + ": " + String.format("%.2f", totalCost[i]));
 		}
 	}
+	
 }
