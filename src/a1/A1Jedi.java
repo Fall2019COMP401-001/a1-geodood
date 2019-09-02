@@ -16,7 +16,7 @@ int itemCount = scan.nextInt();
 		double[] price = new double[itemCount];
 		int[] numberOfEachItem = new int[itemCount];
 		int[] numberOfBuyers = new int[itemCount];
-
+		int[] base = new int[itemCount];
 		
 		for (int i = 0; i < itemCount; i++) {
 			itemName[i] = scan.next();
@@ -30,7 +30,7 @@ int itemCount = scan.nextInt();
 		String[] firstName = new String[customerCount];
 		String[] lastName = new String[customerCount];
 		int[] numberOfItems = new int[customerCount];
-		
+
 		for (int i = 0; i < customerCount; i++) {
 			firstName[i] = scan.next(); 
 			lastName[i] = scan.next();
@@ -40,12 +40,19 @@ int itemCount = scan.nextInt();
 			for (int j = 0; j < n; j++) {
 				int quantity = scan.nextInt();
 				String itemBought = scan.next();
-				
+		
 				for (int k = 0; k < itemCount; k++) {
 					if (itemBought.equals(itemName[k])) {
 						numberOfEachItem[k] += quantity;
-						numberOfBuyers[k] ++;
-					}
+						if (numberOfBuyers[k] == base[k]) {
+							numberOfBuyers[k]++;	
+						}
+					}	
+				}
+			}
+			for (int l = 0; l < itemCount; l++ ) {
+				if (numberOfBuyers[l] != base[l]) {
+					base[l] = numberOfBuyers[l];
 				}
 			}
 		} 
