@@ -41,6 +41,7 @@ public class A1Adept {
 				for (int k = 0; k < itemCount; k++) {
 					if (itemBought.equals(itemName[k])) {
 						totalCost[i] += quantity * price[k];
+						continue;
 					}
 				}	
 			}
@@ -58,20 +59,24 @@ public class A1Adept {
 	}
 		
 	static String findBiggest(int num, String[] first, String[] last, double[] amount) {
+		double base = amount[0];
 		String big = first[0] + " " + last [0] + " (" + String.format("%.2f", amount[0]) +")";
 		for (int i = 1; i < num; i++ ) {
-			if (amount[i] > amount [i-1]) {
-				big = first [i] + "  " + last [i] + "  (" + String.format("%.2f", amount [i]) +")";
+			if (amount[i] > base ) {
+				big = first [i] + "  " + last [i] + "  (" + String.format("%.2f", amount[i]) +")";
+				base = amount[i];
 			}
 		}
 		return big;
 	}
 	
 	static String findSmallest(int num, String[] first, String[] last, double[] amount) {
+		double base = amount[0];
 		String small = first[0] + " " + last [0] + " (" + String.format("%.2f", amount[0]) +")";
 		for (int i = 1; i < num; i++ ) {
-			if (amount[i] < amount [i-1]) {
+			if (amount[i] < base ) {
 				small = first [i] + "  " + last [i] + " (" + String.format("%.2f", amount [i]) +")";
+				base = amount[i];
 			}
 		}
 		return small;
